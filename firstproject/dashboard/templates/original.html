@@ -1,0 +1,182 @@
+{% extends 'basic.html'%}
+{%block content%}
+<html>
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <title>Modifier</title>
+   <style>
+    .collapsible {
+        background-color: #A8FF8F;
+        color: black;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+      }
+    .collapsible:hover {
+        background-color: #C8FF7C;
+      }    
+   </style>
+</head>
+<body >
+  
+    <button type="button" class="collapsible" id="myButton"><h2>Politique de sécurité</h2></button> 
+    <div class="content">
+    
+        <br>
+    <h4>Objectif: </h4> 
+    <p> Apporter à la sécurité des systèmes d’information (SI) une orientation et un soutien de</p>
+    <p>la part de la direction de l’entité ou de l’IIV, conformément aux exigences métier et aux lois,</p>
+    <p>règlements, directives et référentiels en vigueur.</p>
+<br>
+
+ <form action="#" method="post">
+  {%csrf_token%}
+  <!--Qst1-->
+
+  <h3>Est ce que vous avez besoin de sécurité définie?</h3>
+
+          <div class="body">
+        <p>
+        <label>
+          <input type="radio" name="group1" checked="checked" />
+          <span>Oui</span>
+        </label>
+        </p>
+        <p>
+            <label>
+              <input type="radio" name="group1"  />
+              <span>Non</span>
+            </label>
+            </p>
+            <p>
+                <label>
+                  <input type="radio" name="group1" />
+                  <span>Je ne sais pas</span>
+                </label>
+                </p>
+<br>
+    Niveau de maturité:
+    <select name='maturite'>
+        <option>N/A</option>
+        <option>Aucun</option>
+        <option>Initial</option>
+        <option>Reproductible</option>
+        <option>Défini</option>
+        <option>Maitrisé</option>
+        <option>Optimisé</option>
+    </select>
+    <br><br>
+    Niveau de Conformité: 
+    <p>
+      
+      </p>
+</div>
+
+<br>
+
+<!--Qst2-->
+<h3>Est ce que vous avez réalisé un examen annuel de l'application des mesures ?
+</h3>
+          <div class="body">
+        <p>
+        <label>
+          <input type="radio" name="group2" />
+          <span>Oui</span>
+        </label>
+        </p>
+        <p>
+            <label>
+              <input type="radio" name="group2"  />
+              <span>Non</span>
+            </label>
+            </p>
+            <p>
+                <label>
+                  <input type="radio" name="group2"checked="checked" />
+                  <span>Je ne sais pas</span>
+                </label>
+                </p>
+<br>
+    Niveau de maturité:
+    <select name="maturite">
+        <option>N/A</option>
+        <option>Aucun</option>
+        <option>Initial</option>
+        <option>Reproductible</option>
+        <option>Défini</option>
+        <option>Maitrisé</option>
+        <option>Optimisé</option>
+    </select>
+    <br><br>
+    Niveau de Conformité:
+    <p>
+
+    </p>
+</div>
+<br>
+    <!--Qst3-->
+    <h3>Est-ce que vous avez renseignés le tableau de bord?
+  </h3>
+          <div class="body">
+            <p>
+        <label>
+          <input type="radio" name="group3" checked="checked" />
+          <span>Oui</span>
+        </label>
+        </p>
+        <p>
+            <label>
+              <input type="radio" name="group3"  />
+              <span>Non</span>
+            </label>
+            </p>
+            <p>
+                <label>
+                  <input type="radio" name="group3" />
+                  <span>Je ne sais pas</span>
+                </label>
+                </p>
+<br>
+    Niveau de maturité:
+    <select name="maturite">
+        <option >N/A</option>
+        <option >Aucun</option>
+        <option >Initial</option>
+        <option >Reproductible</option>
+        <option >Défini</option>
+        <option >Maitrisé</option>
+        <option >Optimisé</option>
+    </select>
+    <br><br>
+    Niveau de Conformité:
+    <p>
+
+    </p>
+</div>
+    <br>
+    <input type="submit" value="Save" >
+</form>
+</div>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+var i;
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html> 
+{%endblock%}

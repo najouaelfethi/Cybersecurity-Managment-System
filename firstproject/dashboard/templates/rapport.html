@@ -1,0 +1,107 @@
+{%extends 'basic.html'%}
+{% block content %}
+
+
+<html>
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <meta http-equiv="content-type"content="text/html;charset=ISO-8859-1" />
+   <title>Evaluation de la maturité du SI</title>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
+   <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+  
+</head>
+<body>
+    
+    <table id="tblExport" border='1' >
+      
+      <tr>
+          <th>Chapitre</th>
+          <th>Question </th>
+          <th>Réponse </th>
+          <th>Niveau de maturité</th>
+        </tr>
+      <!--
+      {%for answer in answers %}
+      {%for key, value in reponse.items %}
+      <tr>
+        <td>{{answer.category_id}}</td>
+        <td>{{ key}}</td>        
+        <td>{{ value}}</td>
+        <td>{{ key_m}}</td> 
+        <td>{{ value_}}</td> 
+        </tr>
+        {% endfor %}
+        {% endfor %}
+  -->
+</table>
+
+<script>
+var reponse = {{ reponse|safe }};
+var maturite = {{ maturite|safe }};
+var data = [];
+
+// Convert dictionaries into objects
+Object.keys(reponse).forEach(function(key) {
+  var obj = {
+    category: 'Organisation de la sécurité',
+    question: key,
+    reponse: reponse[key],
+    maturiteKey: key,
+    maturite: maturite[key]
+  };
+  data.push(obj);
+});
+
+// Access the data in the HTML table
+var table = document.getElementById("tblExport");
+var tbody = document.createElement("tbody");
+
+data.forEach(function(obj) {
+  var row = document.createElement("tr");
+
+  var categoryCell = document.createElement("td");
+  categoryCell.textContent = obj.category;
+  row.appendChild(categoryCell);
+
+  var questionCell = document.createElement("td");
+  questionCell.textContent = obj.question;
+  row.appendChild(questionCell);
+
+  var reponseCell = document.createElement("td");
+  reponseCell.textContent = obj.reponse;
+  row.appendChild(reponseCell);
+
+  /*var maturiteKeyCell = document.createElement("td");
+  maturiteKeyCell.textContent = obj.maturiteKey;
+  row.appendChild(maturiteKeyCell);*/
+
+  var maturiteCell = document.createElement("td");
+  maturiteCell.textContent = obj.maturite;
+  row.appendChild(maturiteCell);
+
+  tbody.appendChild(row);
+});
+
+table.appendChild(tbody);
+
+
+   
+</script>
+
+
+  <button id="btnExport" onclick="exportExcel('xlsx', 'myfirstsheet')" >Export to excel</button>
+  <script>
+    function exportExcel(fileExtension,fileName){
+        var el =document.getElementById("tblExport");
+        var wb= XLSX.utils.table_to_book(el, {sheet: 'Evaluation'});
+        return XLSX.writeFile(wb, fileName+"."+fileExtension||('MySheetName.'+(fileExtension || 'xlsx')));
+
+    }
+  </script>
+
+</body>
+</html> 
+{% endblock %}

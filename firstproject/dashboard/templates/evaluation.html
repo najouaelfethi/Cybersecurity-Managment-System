@@ -1,0 +1,151 @@
+{%extends 'basic.html'%}
+{%load static%}
+{%block content%}
+<html>
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <meta http-equiv="content-type"content="text/html;charset=ISO-8859-1" />
+   <title>Evaluation de la maturité du SI</title>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
+
+  
+</head>
+<body>
+    <div class="row">
+        
+        <div class="col-sm-8"><h2>Evaluation</h2>
+            <br>
+        </div>
+        <div class="col-sm-8">
+            <button  id="addButton" type="button" class="btn btn-success add-new" ><a href ="{% url 'addEvaluation'%}" class="text-white shadow"> Nouvelle Evaluation </a></button>             
+        </div>
+            <br><br><br>
+       
+        <!--<div class="col-sm-7" </div> >-->
+            <div class="search-box " >
+                    <input onkeyup="searchData(this.value)" type="text" id="search" placeholder="Chercher..." style="width: 250px; height:40px;"/><br>
+                    <!--anything we put in search box it is passed in function parameter-->
+                    <button onclick="getSearchMood(this.id)" id="chercherNom" class="btn btn-primary" style="width: 100px; height:35px;" >Par nom</button>
+                    <button onclick="getSearchMood(this.id)" id="chercherEntite" class="btn btn-primary" style="width: 100px; height:35px;" >Par entité</button>
+                    <!-- id is passed in functiom parameter-->
+                <br><br>
+            </div>
+       
+    
+
+    <div class="col-md-12">
+
+        <table class="table align-middle mb-0 bg-white" >
+          <thead class="bg-light">
+        <tr>
+            <th>Nom</th>
+            <th>Entité </th>
+            <th>Description </th>
+            <th>Date de création</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+            <th>Rapport </th> 
+            <!--add entité-->
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        {% for evaluation in evaluation%} 
+        <tr>
+            <td>{{evaluation.nom}}</td>
+            <td>{{evaluation.entite}}</td>
+            <td>{{evaluation.description}}</td>
+            <td>{{evaluation.date}}</td>
+            <td><a class="btn btn-sm btn-info" href="{%url 'modifier' evaluation.id%}">Modifier</a></td>
+            <td><a class="btn btn-sm btn-danger" href="{%url 'supprimer' evaluation.id%}">Supprimer</a></td>
+            <td><a class="btn btn-sm btn-success" href="{% url 'rapportExcel'%}"> Rapport </a></td>
+         
+        </tr>
+       {% endfor %}
+    </tbody>
+    </table>
+
+</div>
+    
+</div>
+<script>
+var searchMood='nom';
+var evaluationNomArray=[
+{% for evaluation in evaluation%} 
+{
+    nom: "{{ evaluation.nom|safe }}",
+    entite: "{{ evaluation.entite|safe }}",
+    description: "{{ evaluation.description|safe }}",
+    date: "{{ evaluation.date|safe }}"
+},
+    
+{% endfor %}
+];
+//{}
+function getSearchMood(id){
+    var search = document.getElementById('search');
+    if(id=='chercherNom'){
+        searchMood='nom';
+        search.placeholder='Chercher par nom';
+    }
+    else{
+        searchMood='entite';
+        search.placeholder='Chercher par entité';
+
+    }
+    search.focus()
+
+}
+
+//fonctionnement du search
+//{}
+function searchData(value){
+    var table='';
+    
+    if(searchMood =='nom'){   
+        for(var i=0; i<evaluationNomArray.length; i++){
+            if(evaluationNomArray[i].nom.toLowerCase().includes(value.toLowerCase())){
+                 table+=
+           `<tr>
+            <td>${evaluationNomArray[i].nom}</td>
+            <td>${evaluationNomArray[i].entite}</td>
+            <td>${evaluationNomArray[i].description}</td>
+            <td>${evaluationNomArray[i].date}</td>
+            <td><a class="btn btn-sm btn-info" href="modifier">Modifier</a></td>
+            <td><a class="btn btn-sm btn-danger" href="supprimer${evaluationNomArray[i].id}">Supprimer</a></td>
+            <td><a class="btn btn-sm btn-success" href="#">Rapport</a></td>
+            </tr>`;
+
+
+            }
+        }
+
+    }
+
+    else{
+        for(var i=0; i<evaluationNomArray.length; i++){
+            if(evaluationNomArray[i].entite.toLowerCase().includes(value.toLowerCase())){
+                 table+=
+           `<tr>
+            <td>${evaluationNomArray[i].nom}</td>
+            <td>${evaluationNomArray[i].entite}</td>
+            <td>${evaluationNomArray[i].description}</td>
+            <td>${evaluationNomArray[i].date}</td>
+            <td><a class="btn btn-sm btn-info" href="modifier">Modifier</a></td>
+            <td><a class="btn btn-sm btn-danger" href="supprimer${evaluationNomArray[i].id}">Supprimer</a></td>
+            <td><a class="btn btn-sm btn-success" href="#">Rapport</a></td>
+            </tr>`;
+
+
+            }
+        }
+   }
+   //outside bcz we will use it in nom and entite
+    document.getElementById('table-body').innerHTML=table;
+    
+}
+</script>
+
+</body>
+</html> 
+{%endblock%}

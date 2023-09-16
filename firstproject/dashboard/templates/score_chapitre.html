@@ -1,0 +1,79 @@
+{% load static %}
+{% block content%}
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <title>Etat d'avancement</title>
+   <!--Bootstrap CSS file-->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-xl-20 col-lg-5">
+              <div class="card shadow mb-4">
+                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <h5 class="m-0 font-weight-bold text-primary">Taux De Conformité par chapitre</h5>
+                 </div>
+                 <div class="card-body">
+                      <canvas id="chartChapitre"></canvas>
+                      
+                 </div>
+           </div>
+        </div>
+     </div> 
+     
+     <script>   
+          var chartCanvas = document.getElementById('chartChapitre');
+          var ctx = chartCanvas.getContext('2d');
+     
+          var chartData= {
+              title: 'DNSSI2',
+              labels: ['Résultat','Restant'],
+              datasets: [{
+                  data: [20, 22],
+                  backgroundColor: [
+                      "#3ec556",
+                      "rgba(255, 99, 132, 0.8)"
+                  ],
+                  hoverBackgroundColor: [
+                      "#3ec556",
+                      "rgba(255, 99, 132, 0.8)"
+                  ],
+                  
+                  borderWidth: 0
+              }]
+          };
+          
+          var chartOption = {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+               title: {
+                 display: true,
+                 text: 'Evaluation DNSSI2',
+                 fontSize: 18,
+                 fontStyle: 'bold'
+               }
+              }
+          };
+     
+          new Chart(ctx, {
+              type: 'doughnut',
+              data: chartData,
+              options: chartOption
+          });
+     </script>
+     
+      
+     
+     </body>
+     </html>
+     
+     {% endblock %}

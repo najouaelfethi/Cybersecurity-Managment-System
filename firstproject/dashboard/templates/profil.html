@@ -1,0 +1,77 @@
+{%extends 'basic.html'%}
+{%load static%}
+{%block content%}
+<html>
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <meta http-equiv="content-type"content="text/html;charset=ISO-8859-1" />
+   <title>Profil</title>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  
+</head>
+<body>
+  
+<section class="vh-100" style="background-color: ;">
+    
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-6 mb-4 mb-lg-0">
+          <div class="card mb-3" style="border-radius: .5rem;">
+            <span class="border border-success"></span>
+            
+            <div class="row g-0">
+              <div class="col-md-4 gradient-custom text-center text-white"
+                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                <img src="{%static 'ocpkhouribga.png'%}" 
+                  alt="Avatar" class="img-fluid my-5" style="width: 120px;" />
+                <i class="far fa-edit mb-5"></i>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body p-4">
+                  <h5>Informations</h5>
+                  <hr class="mt-0 mb-4" style="background-color: green;">
+                  <div class="row pt-1">
+                    <div class="col-12 mb-3">
+                        <h6><strong>Nom d'utilisateur</h6>
+                        <p class="text-muted">{{profil.user.username}}</p>
+                      </div>
+                      
+                    <div class="col-12 mb-3">
+                      <h6><strong>Email</h6>
+                      <p class="text-muted">{{profil.email}}</p>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <h6><strong>Entité</h6>
+                        <p class="text-muted">{{profil.entite}}</p>
+                      </div>
+                    <div class="col-12 mb-3">
+                      <h6><strong>Numéro de Téléphone</h6>
+                      <p class="text-muted">{{profil.numero}}</p>
+                    </div>
+                    
+                  </div>
+                  <h6><strong>Evaluations</h6>
+                  <hr class="mt-0 mb-4" style="background-color: green;">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h6>Récement</h6>
+                      <p class="text-muted">{{profil.evaluationRecente}}</p>
+                    </div>
+                  </div>
+                  <!--<button class="btn btn-success">Modifier</button>-->
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html> 
+{%endblock%}

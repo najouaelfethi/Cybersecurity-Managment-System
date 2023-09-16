@@ -1,0 +1,46 @@
+{%extends 'basic.html'%}
+{%load static%}
+
+<html>
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <title>Ajouter plan d'action</title>
+</head>
+<body> 
+     {%block content%}
+     <div class="col-6">
+        <div class="card shadow mb-4">
+           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h5 class="m-0 font-weight-bold text-success">Ajouter un plan d'action</h5>
+           </div>
+           <div class="card-body col-10">
+                  <form action="#" method="post">
+        {%csrf_token%}
+    <label><b>Chapitre</b></label><br>
+    <input type='text' name='chapitre' id="chapitre"><br><br>
+
+    <label><b>Actions</b></label><br>
+    <textarea type='text' name='action' id="action" rows="4" cols="50" ></textarea><br><br>
+
+    <label> <b>Responsable(s)</b> </label><br>
+    <input type="text" name="responsable" id="responsable"><br><br>
+
+    <label><b>Date de début</b></label><br>
+    <input type='date' name='dateD' id="dateD"><br><br>
+
+    <label><b>Date de fin</b></label><br>
+    <input type='date' name='dateF' id="dateF"><br><br>
+
+    <label><b>Budget</b></label><br>
+    <input type='text' name='budget' id="budget"><br><br>
+
+    <input class="btn btn-success" type='submit' value='Save'>
+    </form>
+           </div>
+         </div>
+   </div>
+    
+     {%endblock%}   
+</body>
+</html>

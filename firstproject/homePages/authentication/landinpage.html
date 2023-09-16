@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Our Website</title>
+  <meta name="description" content="landing page">
+  <link rel="icon" href="{% static 'img/logo.png' %}" sizes="32x32" type="image/png">
+  <!-- custom.css  -->
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <!-- bootstrap.min.css -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+  <!-- AOS -->
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+</head>
+<body>
+ <!-- banner banner-bk -->
+<div class="jumbotron jumbotron-fluid" id="banner" style="background-image: url({% static 'img/cyber5_image.PNG' %}); height: 600px; ">
+
+    <div class="container text-center text-md-left">
+      <header>
+        <div class="row justify-content-between">
+          <div class="col-2">
+            <img src="{% static 'img/logo.png' %}" alt="logo" style="height: 90px;">
+          </div>
+          
+          <div class="col-6 align-self-center text-right">
+          <button class="btn btn-success" style="width: 180px; height: 60px"><a href="{% url 'login-page' %}" class="text-white lead ">Commencer</a></button> 
+          </div>
+        </div>
+      </header>
+      <h1 data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="display-3 text-white font-weight-bold my-5">
+        Cyber Sécurité
+      </h1>
+      <div>
+        <p class="display-3 text-white font-weight-bold my-5">
+          Les technologies et les meilleures pratiques de cybersécurité protègent les systèmes
+          <br> essentiels et les informations sensibles contre un nombre croissant de menaces
+          <br> en constante évolution
+        </p>
+      </div>
+    </div>
+
+</div>
+  
+<!-- feature (skew background) -->
+<div class="jumbotron jumbotron-fluid feature" id="feature-first">
+    <div class="container my-5">
+        <div class="row justify-content-between text-center text-md-left">
+            <div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true" class="col-md-6">
+                <h2 class="font-weight-bold">Qu'est-ce que la cybersécurité ?</h2>
+                <p class="my-4">La cybersécurité est la pratique qui consiste à protéger les systèmes critiques et
+                    <br>les informations sensibles contre les attaques numériques. Également appelées sécurité des 
+                    <br>technologies de l'information (IT), les mesures de cybersécurité visent à lutter contre les
+                    <br>menaces qui pèsent sur les systèmes et les applications en réseau, qu'elles proviennent de 
+                    <br>l'intérieur ou de l'extérieur d'une entreprise.
+                </p>
+                <a href="{% url 'logout' %}" class="btn my-4 font-weight-bold atlas-cta cta-blue">savoir plus</a>
+            </div>
+            <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 align-self-center">
+                <img src="{% static 'img/Cybersecurity-Transparent-Images.png' %}" alt="Take a look inside" class="mx-auto d-block">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- feature (green background) -->
+<div class="jumbotron jumbotron-fluid feature feature-large" id="feature-last">
+    <div class="container">
+      <div class="row justify-content-between text-center text-md-left">
+        <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 flex-md-last">
+          <h2 class="font-weight-bold">Domaines de cybersécurité</h2>
+          <p class="my-4">
+            Une stratégie de cybersécurité robuste comporte des couches de protection contre la cybercriminalité, notamment les cyberattaques qui tentent d'accéder à des données, de les modifier ou de les détruire, d'extorquer de l'argent aux utilisateurs ou à l'organisation, ou de perturber le fonctionnement de l'entreprise. Les contre-mesures doivent couvrir :
+            <br>
+            <span id="moreText" style="display: none;">
+                Sécurité des infrastructures critiques, Sécurité du réseau, Sécurité des applications, Sécurité du cloud, Sécurité des informations, Formation des utilisateurs finaux, Sécurité du stockage, Sécurité mobile
+            </span>
+            <a href="#" id="toggleBtn">Lire la suite</a>
+          </p>
+          <a href="{% url 'logout' %}" class="btn my-4 font-weight-bold cta-blue">savoir plus</a>
+        </div>
+        <div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true" class="col-md-6 align-self-center flex-md-first">
+          <img src="{% static 'img/40832 [Converted].png' %}" alt="Safe and reliable" class="mx-auto d-block">
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <br><br><br><br>
+  <div class="container text-center">
+      <div class="row">
+        <div class="col-md-4">
+          <h6 class="text-uppercase">Address</h6>
+          <p>Group OCP<br>
+             Route d'Ouled Zid, Khouribga, Morocco</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="text-uppercase">Contact</h6>
+          <p>Email: info@ocpgroup.ma<br>
+             Phone: +212 5 23 48 95 95</p>
+        </div>
+      <div class="col-md-4">
+        <h6 class="text-uppercase">Follow Us</h6>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="https://www.facebook.com/OCPGroupMA"><i class="fa fa-facebook"></i></a></li>
+          <li class="list-inline-item"><a href="https://twitter.com/ocpgroup"><i class="fa fa-twitter"></i></a></li>
+          <li class="list-inline-item"><a href="https://www.instagram.com/ocpgroup/"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+      </div>
+  </div>
+  <br><br>
+</footer>
+
+      <!-- Map -->
+      <title>Map Example</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+      <style>
+        #map {
+          height: 400px;
+          width: 100%;
+        }
+      </style>
+    </head>
+    <body>
+    <!-- Map -->
+    <div id="map"></div>
+    
+    <!-- JavaScript to load the map -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+
+<!-- JavaScript files -->
+<script src="{% static 'js/js.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>

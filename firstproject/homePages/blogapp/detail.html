@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load embed_video_tags %}
+{% load static %}
+
+{% block title %}
+<title>Blog Detail</title>
+{% endblock title %}
+
+
+{% block content %}
+<div class="col-lg-8" style="margin-top: 50px">
+    <!-- Post content-->
+    <article class="card mb-4" style="margin-left: 20px;">
+        <header class="card-header">
+            <h1 class="card-title fw-bold mb-1">{{ blog.title }}</h1>
+            <div class="text-muted fst-italic mb-2">Posted on {{ blog.publish }}</div>
+            <div class="mb-2">
+                {% for cat in blog.category.all %}
+                    <a class="badge bg-secondary text-decoration-none text-light me-2" href="#!">{{ cat }}</a>
+                {% endfor %}
+            </div>
+            <div class="like_container">
+                <i class="{% if msg %}fa-solid fa-heart{% else %}fa-regular fa-heart{% endif %}" id="like-btn"></i>
+                <small id="like_count">{{ blog.likes.count }} {{ blog.likes.count|pluralize:"like" }}</small>
+            </div>
+        </header>
+        
+        <figure class="custom-figure">
+            <img class="img-fluid rounded img-thumbnail" src="{{ blog.image.url }}" alt="..." style="max-width: 70%;" />
+        </figure>
+        
+        <section class="card-body mb-5">
+            <p class="card-text fs-5 mb-4">{{ blog.body | linebreaks }}</p>
+        </section>
+        <div class="card-body">
+            <div class="embed-responsive embed-responsive-16by9">
+                {% video blog.video as video %}
+                    {% video video "640x480" %}
+                {% endvideo %}
+            </div>
+        </div>
+    </article>
+    
+    <!-- Comments section-->
+    <div id="spinner" style="display:none" class="mt-5">
+        <div class="spinner-border text-info me-2" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning me-2" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <section class="card mb-4" style="margin-left: 20px;">
+        <div class="card bg-light">
+            <div class="card-body" id="commentContainer">
+                <!-- Comment form-->
+                <form class="mb-4" id="commentForm" method="POST">
+                    {% csrf_token %}
+                    <textarea id="commentBox" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!" required></textarea>
+                    <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">Submit</button>
+                </form>
+                <!-- Comment with nested comments-->
+                {% for comment in comments %}
+                    <div class="d-flex" id="commentSection">
+                        <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                        <div class="ms-3">
+                            <div class="fw-bold">{{ comment.user }}</div>
+                            {{ comment.body }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    let like_btn = document.getElementById("like-btn");
+    let blog_id = "{{ blog.id }}";
+    let like_count = document.getElementById("like_count");
+
+    like_btn.addEventListener("click", likeBlog);
+
+    function likeBlog(e) {
+        const data = { id: blog_id };
+        let url = "{% url 'like' %}";
+        let user = "{{ request.user }}";
+
+        if (user == "AnonymousUser") {
+            alert("You have to login");
+        } else {
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrftoken
+                },
+                body: JSON.stringify(data),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("Success:", data);
+
+                    console.log(data["num"]);
+
+                    if (data["num"] < 2) {
+                        like_count.innerText = `${data["num"]} like`;
+                    } else {
+                        like_count.innerText = `${data["num"]} likes`;
+                    }
+
+                    if (data["like"] == "no") {
+                        like_btn.classList.remove("fa-solid");
+                        like_btn.classList.add("fa-regular");
+                    } else {
+                        like_btn.classList.remove("fa-regular");
+                        like_btn.classList.add("fa-solid");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
+    }
+
+    let commentForm = document.getElementById("commentForm");
+    let commentBox = document.getElementById("commentBox");
+    let commentContainer = document.getElementById("commentContainer");
+    let spinner = document.getElementById("spinner");
+
+    commentForm.addEventListener("submit", submitComment);
+
+    function submitComment(e) {
+        e.preventDefault();
+        console.log(commentBox.value);
+
+        let data = { comment: commentBox.value, id: blog_id };
+
+        let url = "{% url 'add_comment' %}";
+        spinner.style.display = "block";
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("success:", data);
+
+                let n_div = document.createElement("div");
+                n_div.classList.add("d-flex");
+                n_div.innerHTML = `
+                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                <div class="ms-3">
+                    <div class="fw-bold">${data["user"]}</div>
+                    ${data["body"]}
+                </div>
+                <br> <br> <br>
+                `;
+
+                commentContainer.append(n_div);
+                spinner.style.display = "none";
+            })
+            .catch((error) => {
+                console.log("error:", error);
+            });
+    }
+</script>
+{% endblock scripts %}

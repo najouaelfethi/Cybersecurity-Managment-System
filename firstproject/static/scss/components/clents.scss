@@ -1,0 +1,6 @@
+.client-detail{
+    @include big-padding();
+    .client-card{
+        text-align: center;
+    }
+}

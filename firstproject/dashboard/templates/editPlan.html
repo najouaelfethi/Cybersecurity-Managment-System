@@ -1,0 +1,49 @@
+{%extends 'basic.html'%}
+{%load static%}
+
+<html>
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <title>Ajouter plan d'action</title>
+</head>
+<body> 
+     {%block content%}
+
+     <div class="col-6">
+        <div class="card shadow mb-4">
+           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h5 class="m-0 font-weight-bold text-success">Modifier le plan d'action</h5>
+           </div>
+           <div class="card-body col-10">
+<form action="{% url 'updatePlan' plans.id %}" method="post"><!--pdatePlan/{{plans.id}}-->
+        <input type="hidden" name="id" id="id" value="{{plans.id}}">
+        {%csrf_token%}
+    <label><b>Chapitre</b></label><br>
+    <input type='text' name='chapitre' value="{{plans.chapitre}}"><br><br>
+
+    <label><b>Actions</b></label><br>
+    <input type='text' name='action' value="{{plans.action}}" rows="4" cols="50" ><br><br>
+
+    <label><b>Responsable(s) </b> </label><br>
+    <input type="text" name="responsable" value="{{plans.responsable}}"><br><br>
+
+    <label><b>Date de début</b></label>
+    <input type='date' name='dateD' value="{{ plans.dateD|date:'Y-m-d'}} required"><br><br>
+
+    <label><b>Date de fin</b></label>
+    <input type='date' name='dateF' value="{{ plans.dateF|date:'Y-m-d'}} required"><br><br>
+
+    <label><b>Budget</b></label>
+    <input type='text' name='budget' value="{{plans.budget}}"><br><br>
+
+    <input type='submit' value='Save' class="btn btn-success">
+    </form>
+        </div>  
+           </div>
+         </div>
+   </div>
+    
+     {%endblock%}   
+</body>
+</html>

@@ -1,0 +1,42 @@
+{%extends 'basic.html'%}
+
+<html>
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <title>Ajouter Evaluation</title>
+</head>
+<body>
+{%block content%}   
+    <div class="col-6">
+        <div class="card shadow mb-4">
+           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h5 class="m-0 font-weight-bold text-success">Ajouter une évaluation</h5>
+           </div>
+           <div class="card-body col-10">
+
+<form action="#" method="post">
+        {%csrf_token%}
+    <label><b>Nom</b></label><br>
+    <input type='text' name='nom' id="nom"><br><br>
+
+    <label><b>Entité</b></label><br>
+    <input type='text' name='entite' id="entite"><br><br>
+
+    <label><b>Description</b></label><br>
+    <textarea name="description" rows="4" cols="50" id="description"></textarea><br><br>
+
+    
+    <label><b>Date</b></label><br>
+    <input type='date' name='date' id="date"><br><br>
+    <input type='submit' value='Save' class="btn btn-success">
+    </form>
+
+           </div>
+         </div>
+       </div>
+ 
+    
+{%endblock%}        
+</body>
+</html>

@@ -1,0 +1,35 @@
+{%load static%}
+<html >
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <title>ChatGPT</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+</style>
+</head>
+<body style="background-image: url({%static 'neurons.jpg'%});background-repeat: no-repeat; background-size: cover;">
+  <header>
+    {%include 'navheader.html'%}
+  </header>
+<br><br>
+  <div class ='container'>
+        <h2 style ="text-align:center; color:white;">👋 Bienvenue sur ChatGPT</h2>
+      <form action="{% url 'answerchatgpt' %}" method='post'>
+        {%csrf_token%}
+     <input type='text' name='question' placeholder=' Posez votre question' style="color:white;">
+     <button class='btn btn-info' type='submit' name='action'>
+        Envoyer
+        </button>
+      </form>
+      {% block content%}
+     
+      
+      {% endblock %}
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+ 
+</html>

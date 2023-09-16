@@ -1,0 +1,56 @@
+{% extends 'header.html' %}
+
+{% block title %}
+    <title>Register Page</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="title text-center">
+                        <h1>S'inscrire</h1>
+                    </div>
+
+                    <form action="{% url 'index' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="fname" class="form-label">Prénom:</label>
+                            <input type="text" class="form-control" placeholder="Enter your first name" name="fname">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="sname" class="form-label">Nom:</label>
+                            <input type="text" class="form-control" placeholder="Enter your last name" name="sname">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="uname" class="form-label">Nom d'utilisateur:</label>
+                            <input type="text" class="form-control" placeholder="Create a username" name="uname">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" placeholder="Enter your email" name="email">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pass" class="form-label">Enter mot de passe:</label>
+                            <input type="password" class="form-control" placeholder="Create a password" name="pass">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">S'inscrire</button>
+                        <p class="text-center">Vous avez un compte? <a href="{% url 'login-page' %}" class="btn btn-link">S'authentifier</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+

@@ -1,0 +1,349 @@
+{%extends 'basic.html'%}
+{% load static %}
+{% block content%}
+
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <title>Etat d'avancement</title>
+   <!--Bootstrap CSS file-->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+   <style>
+      .custom-dropdown {
+         width: 250px;
+         padding: 10px;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         background-color: #89CFF0;
+         color: black;
+         font-size: 14px;
+         cursor: pointer;
+      }
+      
+      .custom-dropdown option {
+         padding: 8px;
+         background-color: #89CFF0;
+      }
+   </style>
+
+
+</head>
+<body>
+   
+   <style>
+      .chart-container{
+         width: 300;
+         height: 300;
+         display: inline-block;
+         margin: 10px;
+      }
+   </style>
+   <div class="col-sm-7"><h2>Etat d'avancemnet</h2></div>
+
+   <div class="row ">
+      <div class="col-8">
+
+         <div class="dropdown mt-3">
+               <h5 class="m-0 font-weight-bold text-info">Moyenne Par Chapitre</h5>
+            <select class="custom-dropdown" name="dropdown" id="dropdown" onchange="displayChartBar()">
+               {%for evaluation in evaluation_data%}
+               <option value="{{evaluation.evaluation}}">{{evaluation.evaluation}}</option>
+               {%endfor%}
+            </select>
+         </div>
+
+            {% for evaluation in evaluation_data%}
+               <div class="card shadow mb-4" id="chartCard{{evaluation.evaluation}}" style="display:none;">
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <!--<h5 class="m-0 font-weight-bold text-primary">Moyenne Par Chapitre</h5>-->
+                        <h4 class="m-0 font-weight-bold text-success"><strong>{{evaluation.evaluation}}</strong></h4>
+                  </div>
+                  <div class="card-body">
+                     <div id="chartAvancement{{evaluation.evaluation}}"></div>     
+                  </div>
+                     
+                        <div>
+                     <ul>
+                        <strong>PS:</strong> Politique de sécurité;
+                        <strong>OS:</strong> Organisation de sécurité;
+                        <strong>GB:</strong> Gestion des biens;
+                        <strong>SRH:</strong> Sécurité liée aux ressources humaines;
+                        <strong>SP:</strong> Sécurité physique;
+                        <strong>GET:</strong> Gestion de l'exploitation et des télécommunications;
+                        <strong>CA:</strong> Controle d'accès;
+                        <strong>ADM:</strong> Acquisition, développement et maintenance;
+                        <strong>GI:</strong> Gestion des incidents;
+                        <strong>GPCA:</strong> Gestion du plan de continuité de l'activité;
+                        <strong>CF:</strong> Conformité;
+                          </ul>
+                        </div>
+                        
+               </div>
+            {% endfor%}        
+                
+          
+      </div>    
+   </div>
+      
+       <div class="row">
+         <div class="col-10">
+
+            <div class="dropdown mt-3">
+               <h5 class="m-0 font-weight-bold text-info">Taux De Conformité Par Chapitre</h5>
+            <select class="custom-dropdown" name="dropdown" id="dropdown2" onchange="displayChartDonut()">
+               {%for evaluation in donut_data%}
+               <option value="{{evaluation.evaluation}}">{{evaluation.evaluation}}</option>
+               {%endfor%}
+            </select>
+            </div>
+      
+       {% for evaluation in donut_data %}
+       <div class="card shadow mb-4"  id="chartcard{{evaluation.evaluation}}" style="display:none;" >
+         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h4 class="m-0 font-weight-bold text-success"><strong>{{evaluation.evaluation}}</strong></h4>
+         </div>
+            <div class="card-body">
+               <div id="chartContainer{{evaluation.evaluation}}"></div>
+            </div>
+      </div>
+       {% endfor%}
+  
+   </div>
+</div>
+
+
+
+       
+
+       <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    
+       <script>
+    //chart bar moyenne par objectif 
+    //{} 
+         //displayChartBar()
+         function displayChartBar(){
+            var dropdown = document.getElementById("dropdown");
+            var selectedEvaluation = dropdown.value;
+         
+            {% for evaluation in evaluation_data %}
+            document.getElementById("chartCard{{evaluation.evaluation}}").style.display = "none";
+            {% endfor %}
+         
+            if (selectedEvaluation ) {
+               document.getElementById("chartCard" + selectedEvaluation).style.display = "block";
+             } else {
+               clearChart();
+             }
+           }
+          
+         var evaluation_data= {{evaluation_data|safe}};
+
+         for(var i=0; i<evaluation_data.length; i++){
+            evaluations= evaluation_data[i];
+            category_average=evaluation_data[i].category_averages;
+            category_keys= Object.keys(category_average);//it gives category names
+            category_values= Object.values(category_average);//it gives category values
+         //}
+         //{%for evaluation in evaluation_data%}
+            var chartData= {
+             "type":"bar",
+             "scale-x":{
+              values: category_keys,
+             },
+             
+             "series":[
+             {
+               values: category_values,
+             }
+             ]
+          }
+          
+          zingchart.render({
+             id:"chartAvancement"+evaluations.evaluation,
+             data:"chartData",
+          });
+          {%endfor%}
+         }
+         
+
+       </script>
+     
+     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+            
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script> 
+  //{}
+  function displayChartDonut(){
+   var dropdown = document.getElementById("dropdown2");
+   var selectedEvaluation = dropdown.value;
+
+   {% for evaluation in donut_data %}
+   document.getElementById("chartcard{{evaluation.evaluation}}").style.display = "none";
+   {% endfor %}
+
+   if (selectedEvaluation ) {
+      document.getElementById("chartcard" + selectedEvaluation).style.display = "block";
+    } else {
+      clearChart();
+    }
+  }
+
+  var donut_data={{donut_data|safe}};
+/*
+  {%for evaluation in donut_data%}
+  var chartContainer{{evaluation.evaluation}};
+  {%endfor%}
+  */
+
+  var chartData=[];
+  
+  for(var j=0; j<donut_data.length; j++){
+   data= donut_data[j];
+   evaluations= donut_data[j].evaluation;
+   category_results= donut_data[j].category_results;
+   category_names= Object.keys(category_results);//category names
+   category_values= Object.values(category_results);//category values
+
+   for(var i=0; i<category_names.length; i++){
+   var chartData= 
+  {                 
+     title: category_names[i],
+     labels: ['Résultat','Restant'],
+     datasets: [{
+         data: [category_values[i], 100-category_values[i]],
+  
+         backgroundColor: [
+             "#3ec556",
+             "rgba(255, 99, 132, 0.8)"
+         ],
+         hoverBackgroundColor: [
+             "#3ec556",
+             "rgba(255, 99, 132, 0.8)"
+         ],
+         
+         borderWidth: 0
+     }]
+     
+  };
+
+  
+  var chartContainer= document.getElementById("chartContainer"+evaluations);
+  var chartDiv= document.createElement('div');
+  chartDiv.className= 'chart-container';
+  var canvas= document.createElement('canvas');
+  canvas.id= 'chart'+ (j+1)+ '_'+ (i+1); 
+  chartDiv.appendChild(canvas);
+  chartContainer.appendChild(chartDiv);
+  var ctx= canvas.getContext('2d');
+
+  new Chart(ctx, {
+     type: 'doughnut',
+     data: chartData,
+     //option
+     options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+         title: {
+           display: true,
+           text: category_names[i],
+           fontSize: 18,
+           fontStyle: 'bold'
+         }
+        }
+    }
+  });
+
+}//end for2
+
+}//end for1
+
+
+
+
+
+
+
+
+  /*
+  var chartData=[];
+  
+  for(var k=0; k<category_name.length; k++){
+  var name = category_name[k];
+  var result = category_result[k];
+  
+  var chart= 
+  {                 
+     title: name,
+     labels: ['Résultat','Restant'],
+     datasets: [{
+         data: [result, 100-result],
+  
+         backgroundColor: [
+             "#3ec556",
+             "rgba(255, 99, 132, 0.8)"
+         ],
+         hoverBackgroundColor: [
+             "#3ec556",
+             "rgba(255, 99, 132, 0.8)"
+         ],
+         
+         borderWidth: 0
+     }]
+     
+  };
+    
+  chartData.push(chart);
+  }//end for
+  
+  var chartContainer= document.getElementById("chartContainer");
+  for(var i=0; i<chartData.length; i++){
+  var chartDiv= document.createElement('div');
+  chartDiv.className= 'chart-container';
+  var canvas= document.createElement('canvas');
+  canvas.id= 'chart'+ (i+1);
+  chartDiv.appendChild(canvas);
+  chartContainer.appendChild(chartDiv);
+  var ctx= canvas.getContext('2d');
+
+
+  new Chart(ctx, {
+     type: 'doughnut',
+     data: chartData[i],
+     //option
+     options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+         title: {
+           display: true,
+           text: chartData[i].title,
+           fontSize: 18,
+           fontStyle: 'bold'
+         }
+        }
+    }
+  });
+  
+  }//end for loop
+  */
+  
+  </script>
+ 
+
+</body>
+</html>
+
+
+
+{% endblock %}

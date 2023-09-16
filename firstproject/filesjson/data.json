@@ -1,0 +1,11 @@
+
+{
+ "chapitres":[  
+{  
+"question2":"Est ce que vous avez réalisé un examen annuel de l'application des mesures",
+"question3":"Est-ce que vous avez renseignés le tableau de bord",
+"reponse":["Oui", "Non", "Je ne sais pas"],
+"maturite":["N/A", "Aucun", "Initial", "Reproductible", "Défini", "Maitrisé", "Optimisé"]
+}
+]
+}

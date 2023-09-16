@@ -1,0 +1,63 @@
+.header-com{
+    background-color: #FFF;
+    @include shado-1();
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    .logo{
+        padding: 7px;
+        padding-left: 20px;
+        img{
+            max-width: 250px;
+            @media screen and (max-width:767px){
+                
+            }
+        }
+    }
+    .nav-card{
+        .navbar{
+            @media screen and (max-width:767px){
+                padding: 0px;
+            }
+            ul{
+                li{
+                    a{
+                        padding: 16px;
+                        font-weight: 600;
+                        font-size: .95rem;
+                    }
+                }
+            }
+        }
+    }
+    .call-div{
+        background-color: #2f3437;
+        display: flex;
+        padding: 12px;
+        .ico{
+            padding: 10px;
+            i{
+                color: #1c87d8;
+                font-size: 1.5rem;
+            }
+        }
+        p{
+            color: #CCC;
+            font-size: .85rem;
+        }
+        b{
+            color: #FFF;
+            font-size: .85rem;
+        }
+    }
+    .navbar-toggler{
+        float: right;
+        position: absolute;
+        right: 8px;
+        top: 15px;
+        padding: 3px;
+        @media screen and (max-width: 767px){
+            margin-top: -69px;
+        }
+    }
+}

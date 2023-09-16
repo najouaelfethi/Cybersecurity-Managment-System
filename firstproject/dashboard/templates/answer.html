@@ -1,0 +1,25 @@
+{%extends 'home.html'%}
+<!--{%include 'header.html'%}-->
+<!DOCTYPE html>
+<html>
+    <head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <title>ChatGPT</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <style>
+           
+        </style>
+    <head>
+<body style="background-image: url('neurons.jpg');">
+{% block content%}
+<!-- Here I create card for chatgpt's answer-->
+<h3 style="color:white;">Réponse du Chatgpt</h3>
+<div class='card'>
+    <div class='card-content'>
+        <p>{{answer}}</p>
+    </div>
+</div>
+{%endblock%}    
+</body>
+</html>

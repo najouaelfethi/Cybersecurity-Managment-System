@@ -1,0 +1,123 @@
+{% extends 'basic.html'%}
+{%load static%}
+{%block content%}
+<html>
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <title>Modifier</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+   <style>
+    .collapsible {
+        background-color: #96d1ad;
+        color: black;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+      }
+      .collapsible:hover {
+        background-color: #96d1ad;
+      } 
+      .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #fff;
+      }
+
+            
+   </style>
+</head>
+
+<body>
+  <div class="col-sm-8"><h2>Maturité SI</h2></div>
+
+  {% for category in categories %}
+   
+  <button type="button" class="collapsible" id="category_id{{category.id_category}}" >
+    <div>
+    <i class='bx bxs-caret-down-circle' style="position:absolute; right:4%;"></i> 
+    </div>
+    <h6><b>{{category.category_name}}</b></h6></button>
+   
+  <div class="content"> 
+
+      <h5>Objectifs: </h5>
+     
+    {% for objectif in category.objectif_set.all %}
+    <li>{{objectif.objectif_name}}</li>
+    {% endfor%}
+    
+{% for qst in category.question_set.all %}
+<form action="{% url 'answerEvaluation' evaluation.id %}" method="post">
+  {%csrf_token%}
+    <h3 class="collapsible" style="background-color:#96d1ad;" id="question_id">{{qst.question}}</h3>    
+      <div class="body">
+        
+        <label>
+          <input class="with-gap" type="radio" id ="group{{id}}" name="answer_{{qst.id_question}}" value="oui" />
+          <span>Oui</span>
+        </label>
+        <br>
+            <label>
+              <input type="radio"  id ="group{{id}}" name="answer_{{qst.id_question}}" value="non" />
+              <span>Non</span>
+            </label>        
+            <br>  
+                <label>
+                  <input type="radio"  id ="group{{id}}" name="answer_{{qst.id_question}}" value="je ne sais pas"/>
+                  <span>Je ne sais pas</span>
+                </label>
+          <br>
+    <h5><b>Niveau de maturité:</b></h5>
+    <select name="maturite_{{qst.id_question}}">
+        <option>0 </option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+    </select>
+ <br><br>
+  </div>
+  <input type="hidden" name="question_id" value="{{qst.id_question}}">
+  <input type="hidden" name="category_id"  value="{{category.id_category}}">
+
+    {% endfor%}
+
+<h5><b>Entrer une note:</b></h5>
+<textarea placeholder="commentaire"></textarea>
+<br><br>
+
+<label><h5><b>Télécharger un document:</b></h5></label><br>
+  <input type="file" id="myFile" name="filename">
+  <br><br>
+
+<input type="submit" value="Enregistrer" class="btn btn-success">
+</form>
+<br>
+ 
+  </div>
+{% endfor%}
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html> 
+{%endblock content%}

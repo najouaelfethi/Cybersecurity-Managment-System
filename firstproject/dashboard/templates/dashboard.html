@@ -1,0 +1,280 @@
+{%extends 'basic.html'%}
+{% block content%}
+
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <title>Dashboard</title>
+   <!--Bootstrap CSS file-->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+   .custom-dropdown {
+      width: 250px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #96d1ad;
+      color: black;
+      font-size: 14px;
+      cursor: pointer;
+   }
+   
+   .custom-dropdown option {
+      padding: 8px;
+      background-color: white;
+   }
+   
+
+</style>
+
+</head>
+<body>
+   <div class="col-sm-8"><h2>Dashboard</h2></div>
+   <div class="container mt-5">
+      <div class="row">
+        <!--1er card-->
+        <div class="col-xl-3 col-md-6 mb-4">
+           <div class="card bg-info text-white shadow">
+              <div class="card-body">
+                   <div class="row no-gutters">
+                       <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
+                               Chapitres
+                          </div>
+                           <div class="h5 mb-0 font-weight-bold text-gray-800">11
+                           </div>
+                       <div class="col-auto">
+                          <i class="bx bxs-universal-access"></i>
+                       </div>
+                       </div>
+                    </div>
+              </div>
+           </div>
+        </div>
+  
+  <!--2eme card-->
+        <div class="col-xl-3 col-md-6 mb-4">
+           <div class="card bg-secondary text-white shadow">
+              <div class="card-body">
+                   <div class="row no-gutters">
+                       <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
+                               Questions
+                          </div>
+                           <div class="h5 mb-0 font-weight-bold text-gray-800">97
+                           </div>
+                       <div class="col-auto">
+                          <i class="bx bxs-universal-access"></i>
+                       </div>
+                       </div>
+                    </div>
+              </div>
+           </div>
+        </div>
+  
+        <!--3eme card-->
+  
+         <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-success text-white shadow">
+               <div class="card-body">
+                  <div class="row no-gutters">
+                     <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
+                               Evaluations
+                          </div>
+                       
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"> 3
+                          </div>
+                          
+                       <div class="col-auto">
+                          <i class="bx bxs-universal-access"></i>
+                       </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+  
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<br><br>
+ 
+  <!--Chart-->
+<div class="row">
+   <!--Evaluation-->
+  <div class="col-6">
+        <div class="card shadow mb-4">
+           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h5 class="m-0 font-weight-bold text-primary">Evaluations</h5>
+           </div>
+           <div class="card-body col-10">
+                <div id="myChart"></div>  
+           </div>
+   </div>
+</div>
+        
+<!--Taux de conformite     -->
+   <div class="col-6">
+      
+            <div class="dropdown mt-3">
+               <h4 class="m-0 font-weight-bold text-success">Séléctionner une évaluation</h4>
+            <select class="custom-dropdown" name="dropdown" id="dropdown" onchange="displayChart()">
+               {%for key in dictionnary_key%}
+               <option value="{{key}}">{{key}}</option>
+               {%endfor%}
+            </select>
+            </div>
+            
+
+            {% for key in dictionnary_key %}
+      <div class="card shadow mb-4" id="chartCard{{ key }}" style="display: none;">
+         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h5 class="m-0 font-weight-bold text-primary">Taux De Conformité à la DNSSI</h5>
+         </div>
+         <div class="card-body col-10">
+          <canvas id="chartCanvas{{key}}"></canvas>                   
+         </div>
+      
+         <div class="col-md-12">
+            <button id="saveChart{{key}}" class="btn btn-sm btn-success">Save Chart</button>
+         </div> 
+      </div>
+        {% endfor %}
+      
+   </div>
+  
+</div> 
+
+<!--using zingChart-->
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
+  <script>
+   var dictionnary_key= {{dictionnary_key|safe}}
+   var dictionnary_value= {{dictionnary_value|safe}}
+
+     var chartData= {
+        "type":"bar",
+        "scale-x":{
+         values: dictionnary_key,
+        },
+        
+        "series":[
+        {
+         values: dictionnary_value,
+        }
+        ]
+     }
+     
+     zingchart.render({
+        id:"myChart",
+        data: "chartData"
+      });
+
+
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>   
+
+  {% for key in dictionnary_key %}
+
+   var saveChartButton{{key}} = document.getElementById('saveChart{{key}}');
+   saveChartButton{{key}}.addEventListener('click', function () {
+      var chartCanvas = document.getElementById('chartCanvas{{key}}');
+      var dataURL = chartCanvas.toDataURL('image/png');
+      var downloadLink = document.createElement('a');
+      downloadLink.href = dataURL;
+      downloadLink.download = 'chart{{key}}.png';
+      downloadLink.click();
+   });
+{% endfor %}
+
+  function displayChart(){
+   var dropdown = document.getElementById("dropdown");
+   var selectedEvaluation = dropdown.value;
+
+   {% for key in dictionnary_key %}
+   document.getElementById("chartCard{{ key }}").style.display = "none";
+   {% endfor %}
+
+   if (selectedEvaluation ) {
+      document.getElementById("chartCard" + selectedEvaluation).style.display = "block";
+      createChart(selectedEvaluation, "chartCanvas" + selectedEvaluation);
+    } else {
+      clearChart();
+    }
+  }
+
+   function createChart(selectedEvaluation, chartCanvas){
+      var dictionnary_key= {{ dictionnary_key|safe }};
+      var dictionnary_value= {{ dictionnary_value|safe }};
+
+   for (var k = 0; k < dictionnary_value.length; k++) {
+    if (dictionnary_key[k] == selectedEvaluation) {
+      var result = dictionnary_value[k];
+      var chartCanvas = document.getElementById("chartCanvas" + selectedEvaluation);
+    if (chartCanvas) {
+       var chartData = {
+           title: 'selectedEvaluation',
+           labels: ['Résultat','Restant'],
+           datasets: [{
+               data: [result, 100 - result],
+               backgroundColor: [
+                   "#3ec556",
+                   "rgba(255, 99, 132, 0.8)"
+               ],
+               hoverBackgroundColor: [
+                   "#3ec556",
+                   "rgba(255, 99, 132, 0.8)"
+               ],
+               
+               borderWidth: 0
+           }]
+       };
+       
+       var chartOptions = {
+           responsive: true,
+           maintainAspectRatio: false,
+           plugins: {
+            title: {
+              display: true,
+              text: selectedEvaluation,
+              fontSize: 18,
+              fontStyle: 'bold'
+            }
+           }
+       };
+
+       new Chart(chartCanvas, {
+           type: 'doughnut',
+           data: chartData,
+           options: chartOptions
+       });
+      
+   }
+   break;
+}
+}
+}
+
+   function clearChart() {
+      var chartCanvas = document.getElementById('chartCanvas');
+      var ctx = chartCanvas.getContext('2d');
+      ctx.clearRect(0, 0, chartCanvas.width, chartCanvas.height);
+    }
+    
+    
+       
+</script>
+</body>
+</html>
+{% endblock %}

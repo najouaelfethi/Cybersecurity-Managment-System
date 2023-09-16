@@ -1,0 +1,29 @@
+.service-cover{
+    @include big-padding();
+    background-color: #cccccc1a;
+    .serv-col{
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        .icon{
+            i{
+                font-size: 24px;
+                width: 70px;
+                height: 70px;
+                background-color: $color-primary;
+                border-radius: 50%;
+                color: #FFF;
+                padding-top: 22px;
+            }
+            margin-bottom: 20px;
+           
+        }
+        h6{
+            font-size: 1rem;
+            font-family: $mouse-400;
+        }
+        p{
+            font-size: .9rem;
+        }
+    }
+}

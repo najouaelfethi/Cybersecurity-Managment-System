@@ -1,0 +1,60 @@
+#score = (Nombre de questions répondu par Oui / Nombre total de questions dans chapitre) * 100
+    #categories= Category.objects.all()
+    category_results={}
+    #for category in categories:
+    answers= Answer.objects.all()
+    count_values=0
+    count_questions=0
+    for answer in answers:
+        #filter(evaluation__nom= "DNSSI2", category=category)
+        evaluation= answer.evaluation.nom
+        answer_dict= ast.literal_eval(answer.answer)
+        answer_values= answer_dict.values()
+        answer_keys= answer_dict.keys()
+        count_values+= sum(1 for value in answer_values if value=='oui')
+        count_questions+= len(answer_keys)
+        results= round((count_values/count_questions)*100,2)
+        category_results[category.category_name]= results
+            
+        category_name=list(category_results.keys())
+        category_result=list(category_results.values())
+
+
+
+        #score_chapitre
+        'category_name':category_name,
+        'category_result':category_result,
+
+
+
+
+
+
+
+
+    categories = Category.objects.all()  
+    questions= Question.objects.all()
+    answers = Answer.objects.all()
+    evaluations = Answer.objects.values_list('evaluation_id', flat=True).distinct()
+
+    category_average = {}
+    
+    for category in categories:
+     for answer in answers:
+        #evaluation= answer.evaluation.nom
+        sum_poids_maturite=0
+        sum_poids=0
+    
+        maturite_dict= ast.literal_eval(answer.maturite)
+        maturite_values= maturite_dict.values()
+          
+        for question in questions:
+            poid= question.poids
+            sum_poids_maturite += sum(poid* int(maturite) for maturite in maturite_values)
+            sum_poids += sum(poid for _ in maturite_values)
+            moyenne= round(sum_poids_maturite/sum_poids,2) if sum_poids !=0 else 0
+            category_average[category.names] = moyenne
+
+          # Prepare the data for the graph
+        category_names = list(category_average.keys())
+        category_averages = list(category_average.values())

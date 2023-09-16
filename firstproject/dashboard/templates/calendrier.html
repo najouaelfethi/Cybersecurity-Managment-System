@@ -1,0 +1,108 @@
+{%load static%}
+<html>
+<head>
+   <meta charser='utf-8'>
+   <meta name='viewport' content='width=device-width' initial-scale='1'>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>   
+    
+</head>
+<body>
+    <div class="row">
+        <div class="col-9">
+              <div class="card shadow mb-4">
+                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <h5 class="m-0 font-weight-bold text-primary">Calendrier</h5>
+                 </div>
+                 <div class="card-body">
+                  
+                     <div id="calendar"></div>
+              </div>
+              
+        </div>
+     </div> 
+   
+  
+  <script>
+    $(document).ready(function(){
+      var calendar= $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay',
+            color:'red'
+          },
+          events: "/all_plans",
+          eventColor: '#6cbf6c',
+          selectable:true,
+          selectHelper:true,
+          editable:true,
+          select: function(start, end, allDay){
+            var title= prompt("Enter un événement");
+            if(title){
+                var start= $.fullCalendar.formatDate(start, "Y-MM-DD");
+                var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
+                $.ajax({
+                    type:"GET",
+                    url: "/add_plan",
+                    data: { 'start':start, 'end':end,'title':title},
+                    dataType:"json",
+                    success:function(data){
+                        calendar.fullCalendar("refetchEvents");
+                        alert("Ajouté avec Succès");
+                
+                    },
+                    error: function(data){
+                        alert("Il ya un problème!!");
+                    }
+                });
+            
+            }
+          },
+          /*
+          eventDrop: function(event){
+                var start= $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                var title=event.title;
+                var id= event.id;
+                $.ajax({
+                    type:"GET",
+                    url: "/updatePlan",
+                    data: {'title':title, 'start':start, 'end':end, 'id':id},
+                    dataType:"json",
+                    success:function(data){
+                        calendar.fullCalendar("refetchEvents");
+                        alert("Evénement est édité");
+                
+                    },
+                    error: function(data){
+                        alert("There is a problem");
+                    }
+                });
+          },*/
+        });
+            
+    });
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
