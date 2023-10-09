@@ -17,9 +17,6 @@
       <ul>
         <li><a href="#courses">Courses & Tutorials </a>
     </ul>
-      <ul>
-        <li><a href="#chatgpt">Interface ChatGPT </a>
-    </ul>
     <ul>
         <li><a href="#evaluation">Evaluation </a>
     </ul>
@@ -28,6 +25,9 @@
     </ul>
     <ul>
         <li><a href="#status">Status </a></li>
+    </ul>
+    <ul>
+        <li><a href="#evaluationReport">Evaluation Excel Report </a></li>
     </ul>
     <ul>
         <li><a href="#dashboard">Dashboard </a></li>
@@ -77,21 +77,25 @@ The platform aims to strengthen the security of the site's informational and ope
 **Login for Admins**<br>
 <img src="authentification de l'admin.PNG" width="300" alt="Login for Admin">
 
-### Courses/Tutoriels
-
-### Interface ChatGPT
+### Courses & Tutorials
+<img src="courses.jpg" width="300" alt="Couses and Tutorials">
 
 ### Evaluation
 <img src="evaluation.png" width="550" alt="Evaluation">
 
 ### Maturity
-<img src="maturity.PNG" width="550" alt="Maturity">
+<img src="maturity.PNG" width="550" alt="Maturity"><br>
+**Quix of Chapter 2**<br>
+<img src="quiz chapitre 2.PNG" width="550" alt="Quiz of Chapter 2">
 
 ### Status
 **Status of Average by Chapter**<br>
 <img src="etat d'avancemnet moyenne par objectif.PNG" width="550" alt="Status of Average by Chapter"><br><br>
 **Status per Chapter**<br>
 <img src="etat d'avancement par chapitre.PNG" width="550" alt="Status by Chapter">
+
+### Evaluation Excel Report
+<img src="rapport evaluation.PNG" width="500" alt="Evaluation Report">
 
 ### Dashboard
 <img src="dashboard.png" width="550" alt="Dashboard">
@@ -106,11 +110,6 @@ The platform aims to strengthen the security of the site's informational and ope
 <img src="profil.PNG" width="550" alt="Profil">
 
 
-
-
-
-
-
 ## Built With
 
 * [![Python][Python.com]][Python-url]
@@ -122,19 +121,17 @@ The platform aims to strengthen the security of the site's informational and ope
 * [![MYSQL][Mysql.com]][Mysql-url]
 * [![Chart js][Chart.js]][Chartjs-url]
 * [![XLXS][XLXS.com]][XLXS-url]
-  <!--
+<!--
 * [![Full Calendar][FullCalendar.js]][FullCalendar-url]
 * [![Google Maps][GoogleMaps.com]][GoogleMaps-url]
 -->
-
-
 
 ## Contact
 * [![Linkdin][Linkdin-shield]][Linkdin-url]
 
   
 [Linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[Linkedin-url]: https://linkedin.com/in/othneildrew
+[Linkedin-url]: [[https://www.linkedin.com/in/najoua-elfethi-627a91211/](https://www.linkedin.com/in/najoua-elfethi-627a91211/)
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
