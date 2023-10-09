@@ -37,9 +37,64 @@
     <ul>
         <li><a href="#profil">Profil </a></li>
     </ul>
-    </li>
+     </li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
+### Built With
+
+* [![Python][Python.com]][Python-url]
+* [![Django][Django.com]][Django-url]
+* [![HTML][HTML.com]][HTML-url]
+* [![JavaScript][JavaScript.com]][JavaScript-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JQuery][JQuery.com]][JQuery-url]
+* [![MYSQL][Mysql.com]][Mysql-url]
+* [![Chart js][Chart.js]][Chartjs-url]
+  <!--
+* [![Full Calendar][FullCalendar.js]][FullCalendar-url]
+* [![XLXS][XLXS.com]][XLXS-url]
+* [![Google Maps][GoogleMaps.com]][GoogleMaps-url]
+-->
+
+
+
+### Contact
+* [![Linkdin][Linkdin-shield]][Linkdin-url]
+
+  
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/othneildrew
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 
+[Python.com]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
+[Python-url]: https://www.python.org/
+[Django.com]: https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white
+[Django-url]: https://www.djangoproject.com/
+[HTML.com]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
+[HTML-url]: https://html.com/
+[JavaScript.com]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
+[JavaScript-url]:https://www.javascript.com/
+[Mysql.com]: https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white
+[Mysql-url]: https://www.mysql.com/
+[Chart.js]: https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white
+[Chartjs-url]: https://www.chartjs.org/
+<!-- 
+[FullCalendar.js]: 
+[FullCalendar-url]: https://fullcalendar.io/
+[XLXS.com]: 
+[XLXS-url]: https://www.npmjs.com/package/xlsx
+[GoogleMaps.com]: 
+[GoogleMaps-url]:https://developers.google.com/maps/documentation/javascript/libraries?hl=fr
+-->
+
+
+
+
+
+
+    
 
