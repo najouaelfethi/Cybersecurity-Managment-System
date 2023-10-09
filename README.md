@@ -126,9 +126,6 @@ The platform aims to strengthen the security of the site's informational and ope
 * [![Google Maps][GoogleMaps.com]][GoogleMaps-url]
 -->
 
-## Contact
-* [![Linkdin][Linkdin-shield]][Linkdin-url]
-
   
 [Linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [Linkedin-url]: [[https://www.linkedin.com/in/najoua-elfethi-627a91211/](https://www.linkedin.com/in/najoua-elfethi-627a91211/)
