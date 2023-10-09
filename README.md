@@ -14,9 +14,6 @@
         <li><a href="#loginVisitor">Login visitor & Admin </a></li>
     </ul>
     <ul>
-    <li><a href="#auditDnssi">Audit DNSSI</a></li>
-    </ul>
-    <ul>
         <li><a href="#evaluation">Evaluation </a>
     </ul>
     <ul>
@@ -42,7 +39,26 @@
   </ol>
 </details>
 
-### Built With
+## About The Project
+## Definitions
+## Screens
+### Home Page
+### Login Visitor & Admin
+### Evaluation
+### Maturity
+### Status
+### Dashboard
+### Action Plan
+### Email
+### Profil
+
+
+
+
+
+
+
+## Built With
 
 * [![Python][Python.com]][Python-url]
 * [![Django][Django.com]][Django-url]
@@ -52,15 +68,15 @@
 * [![JQuery][JQuery.com]][JQuery-url]
 * [![MYSQL][Mysql.com]][Mysql-url]
 * [![Chart js][Chart.js]][Chartjs-url]
+* [![XLXS][XLXS.com]][XLXS-url]
   <!--
 * [![Full Calendar][FullCalendar.js]][FullCalendar-url]
-* [![XLXS][XLXS.com]][XLXS-url]
 * [![Google Maps][GoogleMaps.com]][GoogleMaps-url]
 -->
 
 
 
-### Contact
+## Contact
 * [![Linkdin][Linkdin-shield]][Linkdin-url]
 
   
@@ -82,11 +98,11 @@
 [Mysql-url]: https://www.mysql.com/
 [Chart.js]: https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white
 [Chartjs-url]: https://www.chartjs.org/
+[XLXS.com]: https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white
+[XLXS-url]: https://www.npmjs.com/package/xlsx
 <!-- 
 [FullCalendar.js]: 
 [FullCalendar-url]: https://fullcalendar.io/
-[XLXS.com]: 
-[XLXS-url]: https://www.npmjs.com/package/xlsx
 [GoogleMaps.com]: 
 [GoogleMaps-url]:https://developers.google.com/maps/documentation/javascript/libraries?hl=fr
 -->
