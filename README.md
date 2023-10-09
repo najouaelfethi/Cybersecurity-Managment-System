@@ -6,6 +6,7 @@
       <a href="#about-the-project">About The Project</a>
     </li>
     <li><a href="#definitions">Definitions</a></li>
+    <li><a href="#equations">Important Equations</a></li>
     <li><a href="#screens">Screens</a>
     <ul>
         <li><a href="#homePage">Home Page </a></li>
@@ -46,6 +47,13 @@ The platform aims to strengthen the security of the site's informational and ope
 </p>
 
 ## Definitions
+**DNSSI(The directive National Information Systems Security):**  Its objectives are to raise the level of protection and maturity of the security of all the information systems of the administrations and public bodies, as well as important infrastructures vital.<br><br>
+**Chapters:** It represents a separate topic related to the security of the information.<br><br>
+**Weighting:** It refers to the value assigned to an objective or question, it defines the importance of each question, and its value depends on maturity level.<br><br>
+**Maturity level:** The maturity level of an issue reflects the degree to which the entity has implemented or achieved this objective or control.<br><br>
+**Action plan:** It helps to identify areas where the organization needs to improve its information security. It describes specific steps to take to fill each gap.
+
+## Important Equations
 ## Screens
 ### Home Page
 ### Login Visitor & Admin
