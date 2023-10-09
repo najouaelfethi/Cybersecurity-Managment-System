@@ -40,6 +40,11 @@
 </details>
 
 ## About The Project
+<p>
+To ensure the security of OCP Khouribga's IT/OT systems, it's crucial to establish security measures and regularly assess their effectiveness. Our project involves creating an interactive management platform for the cybersecurity of both information and operational systems at the OCP Khouribga site.<br>
+The platform aims to strengthen the security of the site's informational and operational information systems. It utilizes a specialized assessment known as DNSSI (National Information Systems Security Directive), this assessment gives managers a complete view of security and allows them to perform thorough audits to ensure compliance with established standards and to identify areas requiring improvement.
+</p>
+
 ## Definitions
 ## Screens
 ### Home Page
@@ -80,8 +85,8 @@
 * [![Linkdin][Linkdin-shield]][Linkdin-url]
 
   
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[Linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[Linkedin-url]: https://linkedin.com/in/othneildrew
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
