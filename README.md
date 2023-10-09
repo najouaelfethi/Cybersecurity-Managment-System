@@ -14,6 +14,12 @@
     <ul>
         <li><a href="#loginVisitor">Login visitor & Admin </a></li>
     </ul>
+      <ul>
+        <li><a href="#courses">Courses & Tutorials </a>
+    </ul>
+      <ul>
+        <li><a href="#chatgpt">Interface ChatGPT </a>
+    </ul>
     <ul>
         <li><a href="#evaluation">Evaluation </a>
     </ul>
@@ -63,14 +69,41 @@ The platform aims to strengthen the security of the site's informational and ope
 
 ## Screens
 ### Home Page
+<img src="home page.png" width="500" alt="Home Page">
+
 ### Login Visitor & Admin
+**Login for Visitors**<br>
+<img src="authentification visitor.png" width="500" alt="Login for Visitor"><br><br>
+**Login for Admins**<br>
+<img src="authentification de l'admin.PNG" width="300" alt="Login for Admin">
+
+### Courses/Tutoriels
+
+### Interface ChatGPT
+
 ### Evaluation
+<img src="evaluation.png" width="550" alt="Evaluation">
+
 ### Maturity
+<img src="maturity.PNG" width="550" alt="Maturity">
+
 ### Status
+**Status of Average by Chapter**<br>
+<img src="etat d'avancemnet moyenne par objectif.PNG" width="550" alt="Status of Average by Chapter"><br><br>
+**Status per Chapter**<br>
+<img src="etat d'avancement par chapitre.PNG" width="550" alt="Status by Chapter">
+
 ### Dashboard
+<img src="dashboard.png" width="550" alt="Dashboard">
+
 ### Action Plan
+<img src="plan d'action.PNG" width="550" alt="Action Plan">
+
 ### Email
+<img src="email.PNG" width="550" alt="Email">
+
 ### Profil
+<img src="profil.PNG" width="550" alt="Profil">
 
 
 
