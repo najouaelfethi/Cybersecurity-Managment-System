@@ -54,6 +54,13 @@ The platform aims to strengthen the security of the site's informational and ope
 **Action plan:** It helps to identify areas where the organization needs to improve its information security. It describes specific steps to take to fill each gap.
 
 ## Important Equations
+**DNSSI conformity rate:**<br>
+<b><code>Conformity rate = ∑(number of questions at maturity level 4) /total number of questions x 100 [1]</code><br><br>
+**Moyenne par objectif:**<br>
+<b><code>Average per Objective = ∑(weight 𝒙 maturity level) / ∑weight [2]</code><br><br>
+**Conformity rate by chapter (score):**<br>
+<b><code>Score = number of questions answered by YES / total number of questions for each chapter x 100 [3] </code>
+
 ## Screens
 ### Home Page
 ### Login Visitor & Admin
