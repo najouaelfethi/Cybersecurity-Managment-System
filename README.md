@@ -85,7 +85,7 @@ The platform aims to strengthen the security of the site's informational and ope
 
 ### Maturity
 <img src="maturity.PNG" width="550" alt="Maturity"><br>
-**Quix of Chapter 2**<br>
+**Quiz of Chapter 2**<br>
 <img src="quiz chapitre 2.PNG" width="550" alt="Quiz of Chapter 2">
 
 ### Status
